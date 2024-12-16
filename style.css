@@ -1,0 +1,291 @@
+/* Reset styles for consistency */
+* {
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Align sections evenly */
+    gap: 16px;
+    width: 100vw;
+    height: 100vh; /* Full screen height */
+    padding: 8px;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Flex container for stacking sections on smaller screens */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+        justify-content: space-between; /* Spread sections evenly */
+        height: 100vh;
+    }
+
+    #todo, #pomodoro {
+        flex: 1; /* Each section takes up half the screen height */
+        max-height: 50%; /* Prevent sections from exceeding half the screen */
+    }
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.div1 {
+    grid-column: span 2;
+}
+
+.div2 {
+    grid-column-start: 3;
+    justify-self: end;
+}
+
+.div4 {
+    grid-column: span 3;
+    width: 100%;
+    margin-top: 16px; /* Add margin above the horizontal line */
+}
+
+hr {
+    border: 1px solid #ddd;
+    width: 100%;
+    margin: 0;
+}
+
+.div3 {
+    grid-column: span 3;
+    grid-row-start: 3;
+    overflow-y: auto;
+    max-height: calc(60vh - 100px);
+}
+
+/* Input styling */
+#inputTask {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+#inputTask:focus {
+    border-color: #007bff;
+}
+
+/* Button styling */
+#addTask {
+    padding: 12px 16px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%; /* Ensure full width on small screens */
+}
+
+#addTask:hover {
+    background-color: #0056b3;
+}
+
+/* Task list styling */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#taskList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#taskList li:last-child {
+    border-bottom: none;
+}
+
+#taskList li span {
+    cursor: pointer;
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #ccc;
+    opacity: 0.6;
+}
+
+/* Ensure the delete button remains unaffected */
+#taskList li.completed .task-button {
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+
+/* Style for delete buttons */
+.task-button {
+    padding: 8px 12px;
+    width: 30%;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.task-button:hover {
+    background-color: #d9363e;
+}
+
+.task-button:focus {
+    outline: 2px solid #ff7875;
+    outline-offset: 2px;
+}
+
+#todo, #pomodoro {
+    flex: 1; /* Equal width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Shared parent styles */
+.parent {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto 1fr;
+    padding: 16px;
+    width: 80vw;
+    max-width: 600px;
+    height: auto;
+    min-height: 300px;
+    gap: 10px;
+}
+
+/* Dropdown in Pomodoro section centered */
+#pomodoro .div1 {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Timer layout with .timer-item */
+.timer-item {
+    grid-column: span 3; /* Ensure it spans the full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* Add spacing between elements */
+}
+
+/* Timer input styling */
+#timeInput {
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+    max-width: 300px; /* Limit maximum width */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+    text-align: center;
+}
+
+#timeInput:focus {
+    border-color: #007bff;
+}
+
+/* Timer display styling */
+#timer {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 16px 0;
+    color: #333;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+/* Horizontal Timer Buttons */
+#timerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timerSection .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#timerSection button {
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#timerSection button:hover {
+    background-color: #0056b3;
+}
+
+#timerSection button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Task Selector */
+#taskSelector {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+#taskSelector:focus {
+    border-color: #007bff;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 1300px) {
+    .parent {
+        height: 90%; /* Match section height */
+        width: 80%; /* Full width */
+        padding: 10px;
+    }
+
+    .div1, .div2, .div4, .div3 {
+        margin: 0;
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo with Pomodoro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <!-- ToDo Section -->
+        <div id="todo">
+            <div class="parent">
+                <div class="div1">
+                    <input id="inputTask" type="text" placeholder="Add a Task">
+                </div>
+                <div class="div2">
+                    <button id="addTask">Add Task</button>
+                </div>
+                <div class="div4">
+                    <hr>
+                </div>
+                <div class="div3">
+                    <ul id="taskList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pomodoro Section -->
+        <div id="pomodoro">
+            <div class="parent">
+                <div class="div1">
+                    <select id="taskSelector">
+                        <option value="">Select a Task</option>
+                    </select>
+                </div>
+                <div class="div4">
+                    <hr>
+                </div>
+                <div class="div3" id="timerSection">
+                    <!-- User inputs custom time in minutes -->
+                    <input type="number" id="timeInput" class="timer-item" placeholder="Enter time in minutes" min="1" max="120">
+                    <p id="timer" class="timer-item">--:--</p>
+                    <!-- Horizontal buttons -->
+                    <div class="button-group">
+                        <button id="startTimer">Start</button>
+                        <button id="pauseTimer" disabled>Pause</button>
+                        <button id="resetTimer" disabled>Reset</button>
+                    </div>
+                    <button id="finishTimer" disabled>Finish</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
